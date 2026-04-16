@@ -1448,7 +1448,11 @@
   // ── Profile image load handler
   const img = document.getElementById('profileImg');
   if (img && img.src) {
-    img.onload = () => img.classList.add('loaded');
+    if (img.complete) {
+      img.classList.add('loaded');
+    } else {
+      img.onload = () => img.classList.add('loaded');
+    }
   }
 </script>
 </body>
